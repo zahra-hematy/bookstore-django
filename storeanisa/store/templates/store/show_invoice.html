@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headend %}
+<link rel="stylesheet" type='text/css' href="{% static 'store/css/style.css' %} "/>
+{% endblock  %}
+{% block content %}
+Date: {{ invoice.date|date }}
+<table>
+<thead>
+<tr><th>Name</th><th>Count</th><th>Price</th></tr>
+</thead>
+<tbody>
+{% for item in invoice.invoiceitem_set.all  %}
+    <tr><td>{{ item.title }}</td><td>{{ item.Count }}</td><td>{{ item.price }}</td><td> <a href="{% url 'store:cart_complete' %} ">show</a>
+
+{% endfor %}
+</tbody>
+</table>
+Title: {{ invoice.total }} $ <br/><br/>
+<a class='btn btn-primary' href="{% url 'store:pay' invoice_id=invoice.id%}"> pay </a>
+{% endblock  %}

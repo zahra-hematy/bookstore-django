@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='img',  style="background-image:url(media/book_covers/2022/09/18/4f64d235-0da6-59d7-a1bc-507c3b7fd61f.jpg);"  ></div> 
+
+
+<form method='post'>
+{% csrf_token %}
+<table>
+
+{{ form }}
+</table> 
+
+<input type='submit' value='login'/>
+</form>
+
+{% endblock  %}

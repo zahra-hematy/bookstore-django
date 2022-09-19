@@ -1,0 +1,9 @@
+{% autoscape off %}
+
+Hi {{ user.get_full_name }}
+
+please follow this link to activate your account
+
+http://{{ link }}{{% url 'activate' otp=otp %}}
+
+{% endautoscape %}

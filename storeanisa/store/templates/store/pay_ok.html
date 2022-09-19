@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headend %}
+<link rel="stylesheet" type='text/css' href="{% static 'store/css/style.css' %} "/>
+{% endblock  %}
+{% block content %}
+<h1> payment Done </h1>
+Invoice Number : {{ payment.invoice.id }}<br>
+RefID: {{ payment.refid }}
+{% endblock  %}

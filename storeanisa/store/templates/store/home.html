@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headend %}
+<link rel="stylesheet" type='text/css' href="{% static 'store/css/style.css' %} "/>
+{% endblock  %}
+{% block content %}
+
+<div id='cart'>
+        <a href="{% url 'store:show_cart' %}">
+        سبدخرید
+        <span id='cartitemcount'>{{ request.session.cart| length }}</span>
+        <span id='carttotal'>Total: {{ request.session.cart_total }} $</span>
+        </a></div>   
+
+{% for book in objects  %}
+    <div class='item'>
+        <div class='cover'>
+            <img src="{% if book.cover %}{{ book.cover.url }}{% else %}{% static 'store/img/noimage.jpg' %}{% endif %}"/>
+        </div>
+        <div class='info'>
+            <div class='title'> {{ book.title }}</div>
+            <div class='author'> {{ book.author }}</div>
+            <div class='price'> {{ book.price }}</div>
+            <div>
+                <a href ="{% url 'store:add_cart' bid=book.id %}" class='btn btn-primary'>خرید </a>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock  %}

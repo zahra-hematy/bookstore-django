@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headend %}
+<link rel="stylesheet" type='text/css' href="{% static 'store/css/style.css' %} "/>
+{% endblock  %}
+{% block content %}
+
+<table>
+<thead>
+<tr><th>Name</th><th>Count</th><th>Price</th></tr>
+</thead>
+<tbody>
+{% for bid,item in cart.items  %}
+    <tr><td>{{ item.book.title }}</td><td>{{ item.count }}</td><td>{{ item.book.price }}</td><td> <a href="{% url 'store:remove_cart' pk=item.book.id %}">[x]</a>
+
+{% endfor %}
+</tbody>
+</table>
+Title: {{ total }} $ <br/><br/>
+<a class='btn btn-primary' href="{% url 'store:cart_complete' %}"> Complete Purchase </a>
+{% endblock  %}
